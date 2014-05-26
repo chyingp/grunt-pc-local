@@ -25,61 +25,89 @@ In your project's Gruntfile, add a section named `pc_local` to the data object p
 ```js
 grunt.initConfig({
   pc_local: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+      options: {
+          appDir: 'dist', // 源文件所在目录
+          dir: 'dist-client-local',  // 生成到哪个目录
+          domain: 'ke.qq.com',    // 主域名
+          cdn: {
+              jsCDNRoot: 'http://7.url.cn',   // js路径前缀
+              cssCDNRoot: 'http://8.url.cn',  // css路径前缀
+              imgCDNRoot: 'http://9.url.cn'   // img路径前缀
+          }
+      },
+      client: {
+          options: {
+              relativeTo: 'client'    // 本地包生成到哪个目录，比如这里为 'dist-client-local/client'
+          }
+      }
+  }
 })
 ```
 
 ### Options
 
-#### options.separator
+#### options.appDir
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
 
-#### options.punctuation
+源文件所在目录
+
+#### options.dir
 Type: `String`
-Default value: `'.'`
 
-A string value that is used to do something else with whatever else.
+本地化打包后，文件生成到的目录
+
+#### options.domain
+Type: `String`
+
+主域名
+
+#### options.cdn
+Type: `Object`
+
+cdn相关配置（js、css、img），如下所示
+
+* jsCDNRoot: 'http://7.url.cn',   // js路径前缀
+* cssCDNRoot: 'http://8.url.cn',  // css路径前缀
+* imgCDNRoot: 'http://9.url.cn'   // img路径前缀
+
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+下面的例子，会按照本地化打包的规则，将html文件、js、css、img图片，分别生成到对应的目录去
 
-```js
+```
 grunt.initConfig({
   pc_local: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+      options: {
+          appDir: 'dist', // 源文件所在目录
+          dir: 'dist-client-local',  // 生成到哪个目录
+          domain: 'ke.qq.com',    // 主域名
+          cdn: {
+              jsCDNRoot: 'http://7.url.cn',   // js路径前缀
+              cssCDNRoot: 'http://8.url.cn',  // css路径前缀
+              imgCDNRoot: 'http://9.url.cn'   // img路径前缀
+          }
+      },
+      client: {
+          options: {
+              relativeTo: 'client'    // 本地包生成到哪个目录，比如这里为 'dist-client-local/client'
+          }
+      }
+  }
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+只需要运行下面命令
 
-```js
-grunt.initConfig({
-  pc_local: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+```
+grunt pc_local:client
+```
+
+如果生成的js、css需要压缩，可通过`--compress`指定。默认不压缩。备注：这里css采用了`yuicompressor`压缩，js采用了`google  code compiler`压缩。
+
+```
+grunt pc_local:client --compress
 ```
 
 ## Contributing
