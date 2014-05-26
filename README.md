@@ -104,7 +104,7 @@ grunt.initConfig({
 grunt pc_local:client
 ```
 
-如果生成的js、css需要压缩，可通过`--compress`指定。默认不压缩。备注：这里css采用了`yuicompressor`压缩，js采用了`google  code compiler`压缩。
+如果生成的js、css需要压缩，可通过`--compress`指定。默认不压缩。备注：这里css采用了`yuicompressor-2.4.7`压缩，js采用了`google  code compiler 1459`压缩。
 
 ```
 grunt pc_local:client --compress
