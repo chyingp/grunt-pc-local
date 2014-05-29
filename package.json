@@ -2,7 +2,7 @@
   "name": "grunt-pc-local",
   "description": "客户端本地化插件",
   "version": "0.1.1",
-  "homepage": "https://github.com/casperchen/grunt-pc-local",
+  "homepage": "https://github.com/chyingp/grunt-pc-local",
   "author": {
     "name": "chyingp",
     "email": "chyingp@gmail.com",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/casperchen/grunt-pc-local.git"
+    "url": "git://github.com/chyingp/grunt-pc-local.git"
   },
   "bugs": {
-    "url": "https://github.com/casperchen/grunt-pc-local/issues"
+    "url": "https://github.com/chyingp/grunt-pc-local/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/casperchen/grunt-pc-local/blob/master/LICENSE-MIT"
+      "url": "https://github.com/chyingp/grunt-pc-local/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
